@@ -4,7 +4,8 @@ on:
     types: [opened]
 
 jobs:
-  test:
+  run:
+    name: Run Bot
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
