@@ -1,6 +1,6 @@
-import { context, GitHub } from '@actions/github'
+const { context, GitHub } = require('@actions/github')
 
-export function getPrNumber () {
+function getPrNumber () {
   const pullRequest = context.payload.pull_request
   if (!pullRequest) {
     return undefined
@@ -9,7 +9,7 @@ export function getPrNumber () {
   return pullRequest.number
 }
 
-export function getIssueNumber () {
+function getIssueNumber () {
   const issue = context.payload.issue
   if (!issue) {
     return undefined
@@ -18,11 +18,11 @@ export function getIssueNumber () {
   return issue.number
 }
 
-export function getRepo () {
+function getRepo () {
   return context.repo
 }
 
-export async function getIssue (token) {
+async function getIssue (token) {
   const octokit = new GitHub(token)
   let issueNumber
   if (getIssueNumber() !== undefined) {
@@ -41,7 +41,7 @@ export async function getIssue (token) {
   return data
 }
 
-export async function createAndInviteToRepo (token, owner, username, repo) {
+async function createAndInviteToRepo (token, owner, username, repo) {
   const octokit = new GitHub(token)
   try {
     await octokit.repos.createInOrg({
@@ -63,7 +63,7 @@ export async function createAndInviteToRepo (token, owner, username, repo) {
   return true
 }
 
-export async function addLabel (token, owner, repo, issueNumber, label) {
+async function addLabel (token, owner, repo, issueNumber, label) {
   const octokit = new GitHub(token)
   await octokit.issues.addLabels({
     owner,
@@ -73,7 +73,7 @@ export async function addLabel (token, owner, repo, issueNumber, label) {
   })
 }
 
-export async function leaveComment (token, owner, repo, issueNumber, comment) {
+async function leaveComment (token, owner, repo, issueNumber, comment) {
   const octokit = new GitHub(token)
   await octokit.issues.createComment({
     owner,
@@ -83,7 +83,7 @@ export async function leaveComment (token, owner, repo, issueNumber, comment) {
   })
 }
 
-export async function closeIssue (token, owner, repo, issueNumber) {
+async function closeIssue (token, owner, repo, issueNumber) {
   const octokit = new GitHub(token)
   await octokit.issues.update({
     owner,
@@ -91,4 +91,13 @@ export async function closeIssue (token, owner, repo, issueNumber) {
     issue_number: issueNumber,
     state: 'closed'
   })
+}
+
+module.exports = {
+  getRepo,
+  getIssue,
+  createAndInviteToRepo,
+  addLabel,
+  leaveComment,
+  closeIssue
 }

@@ -1,7 +1,7 @@
-import * as core from '@actions/core'
+const core = require('@actions/core')
 
-import { addLabel, closeIssue, createAndInviteToRepo, getIssue, getRepo, leaveComment } from './github.js'
-import { recognizeTitle } from './bot.js'
+const { addLabel, closeIssue, createAndInviteToRepo, getIssue, getRepo, leaveComment } = require('./github')
+const { recognizeTitle } = require('./bot')
 
 async function run () {
   try {
