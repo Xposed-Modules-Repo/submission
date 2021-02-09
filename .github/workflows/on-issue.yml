@@ -1,0 +1,13 @@
+name: "On Issue Opened"
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./
+        with:
+          github-token: "${{ secrets.REPO_TOKEN }}"

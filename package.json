@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "scripts": {
+    "lint": "standard --fix"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^2.2.0"
+  },
+  "devDependencies": {
+    "standard": "^16.0.3"
+  }
+}

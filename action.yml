@@ -1,0 +1,10 @@
+name: "Submission"
+description: "create repositories in request of issues"
+inputs:
+  github-token:
+    description: "Github token"
+    required: true
+runs:
+  using: "node14"
+  main: "index.js"
+  pre: 'npm install'
