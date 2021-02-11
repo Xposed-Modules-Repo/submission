@@ -16,3 +16,6 @@ Home Page: the support link
 ### Repository content
 SUMMARY: the summary of your module, will be shown in the front page
 README.md: the full description of your module
+
+## Transfer
+If you want to transfer existing repo to the modules repo, please fire an issue with title `[transfer] packagename` and transfer the ownership of your original repo to our orginization.
