@@ -1,4 +1,4 @@
-# submission
+# Submission
 Submit your Xposed Modules!
 
 ### How to
