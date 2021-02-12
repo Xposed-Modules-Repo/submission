@@ -14,7 +14,7 @@ async function run () {
     }
     if (label === 'invalid') {
       await leaveComment(token, owner, repo, issue.number,
-        'It seems like your submission has an invalid package name. ' +
+        'It seems like your request has an invalid package name. ' +
         "If that's not true, please contact a human by " +
         'https://modules.lsposed.org/submission?type=appeal'
       )

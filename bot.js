@@ -4,11 +4,12 @@ function recognizeTitle (title) {
     match[1] = match[1].toLowerCase()
     if ([
       'submission',
+      'transfer',
       'appeal',
       'issue',
       'suggestion'
     ].indexOf(match[1]) !== -1) {
-      if (match[1] === 'submission') {
+      if (match[1] === 'submission' || match[1] === 'transfer') {
         return {
           type: checkPackageName(match[2]) ? match[1] : 'invalid',
           title: match[2].toLowerCase()
