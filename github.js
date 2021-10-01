@@ -49,9 +49,10 @@ async function createAndInviteToRepo (token, owner, username, repo) {
       name: repo
     })
   } catch (e) {
-    if (e.field === 'name' || e.errors && e.errors.length && e.errors[0].field === 'name') {
+    if (e.errors && e.errors.length && e.errors[0].field === 'name') {
       return false
     }
+    console.log('嘤嘤嘤', JSON.stringify(e))
     throw e
   }
   await octokit.repos.addCollaborator({
