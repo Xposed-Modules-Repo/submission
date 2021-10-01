@@ -49,7 +49,7 @@ async function createAndInviteToRepo (token, owner, username, repo) {
       name: repo
     })
   } catch (e) {
-    if (e.errors && e.errors.length && e.errors[0].field === 'name') {
+    if (e.field === 'name' || e.errors && e.errors.length && e.errors[0].field === 'name') {
       return false
     }
     throw e
