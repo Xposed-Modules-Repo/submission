@@ -48,12 +48,14 @@ async function createAndInviteToRepo (token, owner, username, repo) {
       org: owner,
       name: repo
     })
-  } catch (e) {
-    if (e.errors && e.errors.length && e.errors[0].field === 'name') {
+  } catch (err) {
+    let e = err
+    if (e.name === 'HttpError') e = e.response.data
+    if (e && e.errors && e.errors.length && e.errors[0].field === 'name') {
       return false
     }
-    console.log('嘤嘤嘤', JSON.stringify(e))
-    throw e
+    console.log('嘤嘤嘤', JSON.stringify(err))
+    throw err
   }
   await octokit.repos.addCollaborator({
     owner,
