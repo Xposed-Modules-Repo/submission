@@ -31,6 +31,12 @@ async function run () {
         )
         await addLabel(token, owner, repo, issue.number, 'approved')
         await leaveComment(token, owner, repo, issue.number,
+          'To make your repository appear in the app and website, here is what you need to do,\n' +
+          "- Make sure you're not leaving the GitHub repo description blank, which indicates the Xposed module display name.\n" +
+          '- Make sure you have at least one release.\n\n' +
+          "If you complied with those requirements but your repo didn't appear in more than 10 minutes, please file an issue to let us know, thanks!"
+        )
+        await leaveComment(token, owner, repo, issue.number,
           'Welcome `' + title + '`!'
         )
         await closeIssue(token, owner, repo, issue.number)
