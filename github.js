@@ -57,23 +57,29 @@ async function createAndInviteToRepo (token, owner, username, repo) {
     console.log('嘤嘤嘤', JSON.stringify(err))
     throw err
   }
-  try {
-    await octokit.repos.addCollaborator({
-      owner,
-      repo,
-      username,
-      permission: 'admin'
-    })
-  } catch (err) {
-    let e = err
-    if (e.name === 'HttpError') e = e.response.data
-    if (e && e.errors && e.errors.length && e.errors[0].field === 'name') {
-      return false
+  for (let i = 0; i < 3; i++) {
+    try {
+      await octokit.repos.addCollaborator({
+        owner,
+        repo,
+        username,
+        permission: 'admin'
+      })
+      break;
+    } catch (err) {
+      let e = err
+      if (e.status == 404) {
+        await new Promise(r => setTimeout(r, 2000));
+        continue
+      }
+      if (e.name === 'HttpError') e = e.response.data
+      if (e && e.errors && e.errors.length && e.errors[0].field === 'name') {
+        return false
+      }
+      console.log('呜呜呜', JSON.stringify(err))
+      throw err
     }
-    console.log('呜呜呜', JSON.stringify(err))
-    throw err
   }
-
   return true
 }
 
