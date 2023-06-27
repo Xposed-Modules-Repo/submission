@@ -5,7 +5,7 @@ Hook使用方法：在Lsposed里启用本模块，勾选作用域目标软件（
 
 注意：该版本模拟了相机APP，并且hook了摄像头数据，部分应用需要Download/VirtualCamera/hook.mp4视频文件，请自行放置相关视频文件，替换内部相机拍照，图片编辑及转视频推荐Ps和Inshot。(需要XP环境)
 
-请先设置本软件及目标软件读写文件权限，不然无法HOOK成功。
+请先设置本软件及目标软件读写文件权限，不然无法HOOK成功（安卓11及以上需要所有文件管理权限）。
 
 
 Ps和Inshot下载：https://pan.quark.cn/s/359ea441510d
