@@ -1,27 +1,13 @@
-# Submission
-Submit your Xposed Modules!
+虚拟相机使用方法：在其他应用调用系统相机拍照时，可以选用本相机直接从相册选择图片与视频，安卓11及以上版本先安装本应用设置权限后用爱玩机工具箱或搞机助手等软件转为系统应用，重启后就可以在相机里设置默认相机了。
+Hook使用方法：在Lsposed里启用本模块，勾选作用域目标软件（例如今日水印相机）
 
-### How to
-To submit your module, please fire an issue with title `[submission] packagename`, where `packagename` is the package name of your module. Then our bot will automatically create a new repository and invite you to be the admin.
+注意：该版本模拟了相机APP，并且hook了摄像头数据，部分应用需要Download/VirtualCamera/hook.mp4视频文件，请自行放置相关视频文件，替换内部相机拍照，图片编辑及转视频推荐Ps和Inshot。(需要XP环境)
+请先设置本软件及目标软件读写文件权限，不然无法HOOK成功。
 
-### Repository structure
-- Title: the package name of your module (for example `com.example.xposedmodule`)
-- Description: the name of your module (for example `Example Xposed Module`)
-- Collaborators: authors of the module
-- Release Title: the version name
-- Release Content: the changelog
-- Release Tag: [version code]-[version name] (if you create the release along with apk assets, bot will automatically update it)
-- Home Page: the support link
+Ps和Inshot下载：https://pan.quark.cn/s/359ea441510d
 
-### Repository content
-- SUMMARY: the summary of your module, will be shown in the front page
-- README.md: the full description of your module
-- For all meta files available please refer to [the example repository](https://github.com/Xposed-Modules-Repo/org.meowcat.example)
-
-### Important notes
-1. If your repository is incomplete, it won't be shown
-2. Update of your repositiory will automatically trigger [build](https://github.com/Xposed-Modules-Repo/modules/actions/workflows/build.yml) and be shown in 5min
-3. If you want your module's update to be shown, please tag it correctly with the apk. (As long as you submit the release with the apk, bot will automatically [update](https://github.com/Xposed-Modules-Repo/modules/actions/workflows/tag.yml) your tag. However, if you edit the release by **only** changing the apk, bot [cannot know](https://stackoverflow.com/questions/37437581/listening-to-release-asset-changes-with-github-webhooks) your editting and the tag won't be updated. So for the best practice, always submit release with valid apk.
-
-## Transfer
-If you want to transfer an existing repo to the modules repo, please fire an issue with title `[transfer] packagename` and transfer the ownership of your original repo to our orginization.
+适用场景：
+1.某应用只提供了拍照并没有提供从相册选择功能时。
+2.摄像头坏掉了而其他应用又需要提供图片与视频时。
+3.摸拟器不提供拍照功能时。
+4.等等。
