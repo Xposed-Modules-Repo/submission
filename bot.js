@@ -35,7 +35,15 @@ function checkPackageName (packageName) {
   }
   const two = groups[0] + '.' + groups[1]
   const three = two + '.' + groups[2]
-  if(two === 'org.lsposed' || two === 'com.google' || two === 'com.android' || three === 'io.github.lsposed') return false
+  switch (two.toLowerCase()) {
+    case 'org.lsposed':
+    case 'com.google':
+    case 'com.android':
+    return false
+    default:
+      break;
+  }
+  if(three.toLowerCase() === 'io.github.lsposed') return false
   return true
 }
 
