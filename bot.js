@@ -31,8 +31,11 @@ function checkPackageName (packageName) {
   if (!packageName.match(/\./)) return false
   const groups = packageName.split('.')
   for (const group of groups) {
-    if (!group.match(/^[a-zA-Z_][a-zA-Z_0-9]*$/)) return false
+    if (!group.match(/^[a-zA-Z_][a-zA-Z_0-9]*$/) || group.toLowerCase() === 'example' ) return false
   }
+  const two = groups[0] + '.' + groups[1]
+  const three = two + '.' + groups[3]
+  if(two === 'org.lsposed' || two === 'com.google' || two === 'com.android' || three === 'io.github.lsposed') return false
   return true
 }
 
