@@ -14,7 +14,7 @@ async function run () {
     }
     if (label === 'invalid') {
       await leaveComment(token, owner, repo, issue.number,
-        'It seems like your request has an invalid package name, please consider another package name. (e.g. io.github. ' + owner + '.[appname])' +
+        'It seems like your request has an invalid package name, please consider another package name. (e.g. io.github.' + owner + '.[appname])' +
         "If that's not true, please contact a human by " +
         'https://modules.lsposed.org/submission?type=appeal'
       )
@@ -42,7 +42,7 @@ async function run () {
         await closeIssue(token, owner, repo, issue.number)
       } else {
         await leaveComment(token, owner, repo, issue.number,
-          'It seems like your package name is already in use, please consider another package name. (e.g. io.github. ' + owner + '.'+ title.split('.').slice(-1) + ')' +
+          'It seems like your package name is already in use, please consider another package name. (e.g. io.github.' + owner + '.'+ title.split('.').slice(-1) + ')' +
           "If you believe that's a fraudulent use, please contact a human by " +
           'https://modules.lsposed.org/submission?type=appeal'
         )
