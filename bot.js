@@ -12,7 +12,7 @@ function recognizeTitle (title) {
       if (match[1] === 'submission' || match[1] === 'transfer') {
         return {
           type: checkPackageName(match[2]) ? match[1] : 'invalid',
-          title: match[2].toLowerCase()
+          title: match[2]
         }
       }
       return {
