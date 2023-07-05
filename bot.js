@@ -33,17 +33,10 @@ function checkPackageName (packageName) {
   for (const group of groups) {
     if (!group.match(/^[a-zA-Z_][a-zA-Z_0-9]*$/) || group.toLowerCase() === 'example') return false
   }
-  const two = groups[0] + '.' + groups[1]
-  const three = two + '.' + groups[2]
-  switch (two.toLowerCase()) {
-    case 'org.lsposed':
-    case 'com.google':
-    case 'com.android':
-    return false
-    default:
-      break;
+  blacklist = ['com.android', 'com.google', 'org.lsposed', 'io.github.lsposed'];
+  for (const item in blacklist) {
+    if(packageName.toLowerCase().startsWith(item)) return false
   }
-  if(three.toLowerCase() === 'io.github.lsposed') return false
   return true
 }
 
