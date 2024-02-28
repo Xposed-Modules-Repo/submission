@@ -12,6 +12,7 @@ async function run () {
     if (label) {
       await addLabel(token, owner, repo, issue.number, label)
     } else {
+      await addLabel(token, owner, repo, issue.number, 'spam')
       await closeIssue(token, owner, repo, issue.number)
       await lockSpamIssue(token, owner, repo, issue.number)
     }
