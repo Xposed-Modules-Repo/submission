@@ -8,8 +8,8 @@ jobs:
     name: Run Bot
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: npm install
+      - uses: actions/checkout@v4
+      - run: yarn
       - uses: ./
         with:
           github-token: "${{ secrets.REPO_TOKEN }}"
