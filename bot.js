@@ -23,7 +23,7 @@ function recognizeTitle (title) {
   }
   return {
     type: '',
-    title: title
+    title
   }
 }
 
@@ -33,9 +33,9 @@ function checkPackageName (packageName) {
   for (const group of groups) {
     if (!group.match(/^[a-zA-Z_][a-zA-Z_0-9]*$/) || group.toLowerCase() === 'example') return false
   }
-  blacklist = ['com.android', 'com.google', 'org.lsposed', 'io.github.lsposed'];
+  const blacklist = ['com.android', 'com.google', 'org.lsposed', 'io.github.lsposed']
   for (const item of blacklist) {
-    if(packageName.toLowerCase().startsWith(item)) return false
+    if (packageName.toLowerCase().startsWith(item)) return false
   }
   return true
 }

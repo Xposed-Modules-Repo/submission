@@ -65,11 +65,11 @@ async function createAndInviteToRepo (token, owner, username, repo) {
         username,
         permission: 'admin'
       })
-      break;
+      break
     } catch (err) {
       let e = err
-      if (e.status == 404) {
-        await new Promise(r => setTimeout(r, 2000));
+      if (e.status === 404) {
+        await new Promise(resolve => setTimeout(resolve, 2000))
         continue
       }
       if (e.name === 'HttpError') e = e.response.data
