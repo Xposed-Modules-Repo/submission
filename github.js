@@ -103,13 +103,14 @@ async function leaveComment (token, owner, repo, issueNumber, comment) {
   })
 }
 
-async function closeIssue (token, owner, repo, issueNumber) {
+async function closeIssue (token, owner, repo, issueNumber, isCompleted = false) {
   const octokit = new GitHub(token)
   await octokit.issues.update({
     owner,
     repo,
     issue_number: issueNumber,
-    state: 'closed'
+    state: 'closed',
+    state_reason: isCompleted ? 'completed' : 'not_planned'
   })
 }
 
