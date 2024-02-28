@@ -1,4 +1,4 @@
-const { context, GitHub } = require('@actions/github')
+const { context, getOctokit } = require('@actions/github')
 
 function getPrNumber () {
   const pullRequest = context.payload.pull_request
@@ -23,7 +23,7 @@ function getRepo () {
 }
 
 async function getIssue (token) {
-  const octokit = new GitHub(token)
+  const octokit = getOctokit(token)
   let issueNumber
   if (getIssueNumber() !== undefined) {
     issueNumber = getIssueNumber()
@@ -42,7 +42,7 @@ async function getIssue (token) {
 }
 
 async function createAndInviteToRepo (token, owner, username, repo) {
-  const octokit = new GitHub(token)
+  const octokit = getOctokit(token)
   try {
     await octokit.repos.createInOrg({
       org: owner,
@@ -84,7 +84,7 @@ async function createAndInviteToRepo (token, owner, username, repo) {
 }
 
 async function addLabel (token, owner, repo, issueNumber, label) {
-  const octokit = new GitHub(token)
+  const octokit = getOctokit(token)
   await octokit.issues.addLabels({
     owner,
     repo,
@@ -94,7 +94,7 @@ async function addLabel (token, owner, repo, issueNumber, label) {
 }
 
 async function leaveComment (token, owner, repo, issueNumber, comment) {
-  const octokit = new GitHub(token)
+  const octokit = getOctokit(token)
   await octokit.issues.createComment({
     owner,
     repo,
@@ -104,7 +104,7 @@ async function leaveComment (token, owner, repo, issueNumber, comment) {
 }
 
 async function closeIssue (token, owner, repo, issueNumber, isCompleted = false) {
-  const octokit = new GitHub(token)
+  const octokit = getOctokit(token)
   await octokit.issues.update({
     owner,
     repo,
@@ -115,7 +115,7 @@ async function closeIssue (token, owner, repo, issueNumber, isCompleted = false)
 }
 
 async function lockSpamIssue (token, owner, repo, issueNumber) {
-  const octokit = new GitHub(token)
+  const octokit = getOctokit(token)
   await octokit.issues.lock({
     owner,
     repo,
