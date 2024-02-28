@@ -1,11 +1,11 @@
-const core = require('@actions/core')
+import { getInput, setFailed } from '@actions/core'
 
-const { addLabel, closeIssue, createAndInviteToRepo, getIssue, getRepo, leaveComment } = require('./github')
-const { recognizeTitle } = require('./bot')
+import { addLabel, closeIssue, createAndInviteToRepo, getIssue, getRepo, leaveComment } from './github'
+import { recognizeTitle } from './bot'
 
 async function run () {
   try {
-    const token = core.getInput('github-token')
+    const token = getInput('github-token')
     const { owner, repo } = getRepo()
     const issue = await getIssue(token)
     const { type: label, title } = recognizeTitle(issue.title)
@@ -53,7 +53,7 @@ async function run () {
       }
     }
   } catch (error) {
-    core.setFailed(error.message)
+    setFailed(error.message)
   }
 }
 
