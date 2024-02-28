@@ -11,6 +11,9 @@ async function run () {
     const { type: label, title } = recognizeTitle(issue.title)
     if (label) {
       await addLabel(token, owner, repo, issue.number, label)
+    } else {
+      await closeIssue(token, owner, repo, issue.number)
+      await lockSpamIssue(token, owner, repo, issue.number)
     }
     if (label === 'invalid') {
       await leaveComment(token, owner, repo, issue.number,

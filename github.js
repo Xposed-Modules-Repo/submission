@@ -113,6 +113,16 @@ async function closeIssue (token, owner, repo, issueNumber) {
   })
 }
 
+async function lockSpamIssue (token, owner, repo, issueNumber) {
+  const octokit = new GitHub(token)
+  await octokit.issues.lock({
+    owner,
+    repo,
+    issue_number: issueNumber,
+    lock_reason: 'spam'
+  })
+}
+
 module.exports = {
   getRepo,
   getIssue,
