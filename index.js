@@ -1,6 +1,6 @@
 const core = require('@actions/core')
 
-const { addLabel, closeIssue, createAndInviteToRepo, getIssue, getRepo, leaveComment } = require('./github')
+const { addLabel, closeIssue, createAndInviteToRepo, getIssue, getRepo, leaveComment, lockSpamIssue } = require('./github')
 const { recognizeTitle } = require('./bot')
 
 async function run () {

@@ -130,5 +130,6 @@ module.exports = {
   createAndInviteToRepo,
   addLabel,
   leaveComment,
-  closeIssue
+  closeIssue,
+  lockSpamIssue
 }
