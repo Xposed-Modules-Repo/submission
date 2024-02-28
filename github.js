@@ -33,7 +33,7 @@ async function getIssue (token) {
     throw new Error('No Issue Provided')
   }
 
-  const { data } = await octokit.issues.get({
+  const { data } = await octokit.rest.issues.get({
     ...getRepo(),
     issue_number: issueNumber
   })
@@ -44,7 +44,7 @@ async function getIssue (token) {
 async function createAndInviteToRepo (token, owner, username, repo) {
   const octokit = getOctokit(token)
   try {
-    await octokit.repos.createInOrg({
+    await octokit.rest.repos.createInOrg({
       org: owner,
       name: repo
     })
@@ -59,7 +59,7 @@ async function createAndInviteToRepo (token, owner, username, repo) {
   }
   for (let i = 0; i < 3; i++) {
     try {
-      await octokit.repos.addCollaborator({
+      await octokit.rest.repos.addCollaborator({
         owner,
         repo,
         username,
@@ -85,7 +85,7 @@ async function createAndInviteToRepo (token, owner, username, repo) {
 
 async function addLabel (token, owner, repo, issueNumber, label) {
   const octokit = getOctokit(token)
-  await octokit.issues.addLabels({
+  await octokit.rest.issues.addLabels({
     owner,
     repo,
     issue_number: issueNumber,
@@ -95,7 +95,7 @@ async function addLabel (token, owner, repo, issueNumber, label) {
 
 async function leaveComment (token, owner, repo, issueNumber, comment) {
   const octokit = getOctokit(token)
-  await octokit.issues.createComment({
+  await octokit.rest.issues.createComment({
     owner,
     repo,
     issue_number: issueNumber,
@@ -105,7 +105,7 @@ async function leaveComment (token, owner, repo, issueNumber, comment) {
 
 async function closeIssue (token, owner, repo, issueNumber, isCompleted = false) {
   const octokit = getOctokit(token)
-  await octokit.issues.update({
+  await octokit.rest.issues.update({
     owner,
     repo,
     issue_number: issueNumber,
@@ -116,7 +116,7 @@ async function closeIssue (token, owner, repo, issueNumber, isCompleted = false)
 
 async function lockSpamIssue (token, owner, repo, issueNumber) {
   const octokit = getOctokit(token)
-  await octokit.issues.lock({
+  await octokit.rest.issues.lock({
     owner,
     repo,
     issue_number: issueNumber,
