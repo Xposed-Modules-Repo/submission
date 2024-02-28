@@ -46,7 +46,10 @@ async function createAndInviteToRepo (token, owner, username, repo) {
   try {
     await octokit.rest.repos.createInOrg({
       org: owner,
-      name: repo
+      name: repo,
+      has_issues: false,
+      has_projects: false,
+      has_wiki: false,
     })
   } catch (err) {
     let e = err
