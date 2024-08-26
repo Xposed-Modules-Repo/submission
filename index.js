@@ -71,30 +71,39 @@ async function run () {
       const newLabel = context.payload.label.name
       if (newLabel === 'spam') {
         await closeSpam(token, owner, repo, issueNo, username)
-      } else if (newLabel === 'approved') {
+      } else if (newLabel === 'approved' && prefixTag === 'submission' && title) { // TODO: transfer
         await approve(token, owner, repo, issueNo, username, title)
       }
     } else if (action === 'opened') {
-      if (prefixTag) {
-        await addLabel(token, owner, repo, issueNo, prefixTag)
-
-        const user = await getUser(token, username)
-        const createdAtDiffMs = new Date() - new Date(user.data.created_at)
-        const isNewAccount = createdAtDiffMs < 1000 * 60 * 60 * 24 * 7 /* 7 days */
-        const isNoFollowers = user.data.followers <= 0
-        if (isNewAccount || isNoFollowers) {
-          await manualRequest(token, owner, repo, issueNo)
-          return
-        }
-      } else {
+      // close missing tag issue
+      if (!prefixTag) {
         await closeSpam(token, owner, repo, issueNo)
+        return
       }
+
+      // close invalid package name issue
       if (prefixTag === 'invalid') {
         await closeInvalid(token, owner, repo, issueNo, username)
+        return
       }
+
+      // check user before adding label
+      const user = await getUser(token, username)
+      const createdAtDiffMs = new Date() - new Date(user.data.created_at)
+      const isNewAccount = createdAtDiffMs < 1000 * 60 * 60 * 24 * 7 /* 7 days */
+      const isNoFollowers = user.data.followers <= 0
+      if (isNewAccount || isNoFollowers) {
+        await manualRequest(token, owner, repo, issueNo)
+        return
+      }
+
+      await addLabel(token, owner, repo, issueNo, prefixTag)
+
+      // submission
       if (prefixTag === 'submission') {
         await approve(token, owner, repo, issueNo, username, title)
       }
+      // transfer, appeal, issue, suggestion
     }
   } catch (error) {
     core.setFailed(error.message)
