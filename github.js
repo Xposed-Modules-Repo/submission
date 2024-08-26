@@ -49,7 +49,7 @@ async function createAndInviteToRepo (token, owner, username, repo) {
       name: repo,
       has_issues: false,
       has_projects: false,
-      has_wiki: false,
+      has_wiki: false
     })
   } catch (err) {
     let e = err
@@ -96,6 +96,16 @@ async function addLabel (token, owner, repo, issueNumber, label) {
   })
 }
 
+async function setLabel (token, owner, repo, issueNumber, label) {
+  const octokit = getOctokit(token)
+  await octokit.rest.issues.setLabels({
+    owner,
+    repo,
+    issue_number: issueNumber,
+    labels: [label]
+  })
+}
+
 async function leaveComment (token, owner, repo, issueNumber, comment) {
   const octokit = getOctokit(token)
   await octokit.rest.issues.createComment({
@@ -127,12 +137,30 @@ async function lockSpamIssue (token, owner, repo, issueNumber) {
   })
 }
 
+async function orgBlockUser (token, owner, username) {
+  const octokit = getOctokit(token)
+  await octokit.rest.orgs.blockUser({
+    org: owner,
+    username
+  })
+}
+
+async function getUser (token, username) {
+  const octokit = getOctokit(token)
+  return await octokit.rest.users.getByUsername({
+    username
+  })
+}
+
 module.exports = {
   getRepo,
   getIssue,
   createAndInviteToRepo,
   addLabel,
+  setLabel,
   leaveComment,
   closeIssue,
-  lockSpamIssue
+  lockSpamIssue,
+  orgBlockUser,
+  getUser
 }
