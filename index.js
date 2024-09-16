@@ -58,6 +58,8 @@ async function manualRequest (token, owner, repo, issueNo) {
 
 async function run () {
   try {
+    if (context.payload.sender.id === 78363386) return // ignore bot
+
     const token = core.getInput('github-token')
     const { owner, repo } = getRepo()
     const issue = await getIssue(token)
