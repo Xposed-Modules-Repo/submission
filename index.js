@@ -18,7 +18,7 @@ async function approve (token, owner, repo, issueNo, username, title) {
       "If you complied with those requirements but your repo didn't appear in more than 10 minutes, please file an issue to let us know, thanks!\n\n" +
       'Welcome `' + title + '`!'
     )
-    await addLabel(token, owner, repo, issueNo, 'approved')
+    await setLabel(token, owner, repo, issueNo, 'approved') // clear other labels
     await closeIssue(token, owner, repo, issueNo, true)
   } else {
     await leaveComment(token, owner, repo, issueNo,
@@ -27,7 +27,7 @@ async function approve (token, owner, repo, issueNo, username, title) {
       "If you believe that's a fraudulent use, please contact a human by " +
       'https://modules.lsposed.org/submission?type=appeal'
     )
-    await addLabel(token, owner, repo, issueNo, 'conflict')
+    await setLabel(token, owner, repo, issueNo, 'conflict') // clear other labels
     await closeIssue(token, owner, repo, issueNo)
   }
 }
@@ -98,8 +98,6 @@ async function run () {
         await manualRequest(token, owner, repo, issueNo)
         return
       }
-
-      await addLabel(token, owner, repo, issueNo, prefixTag)
 
       // submission
       if (prefixTag === 'submission') {
