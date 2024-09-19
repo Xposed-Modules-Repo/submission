@@ -89,18 +89,16 @@ async function run () {
         return
       }
 
-      // check user before adding label
-      const user = await getUser(token, username)
-      const createdAtDiffMs = new Date() - new Date(user.data.created_at)
-      const isNewAccount = createdAtDiffMs < 1000 * 60 * 60 * 24 * 7 /* 7 days */
-      const isNoFollowers = user.data.followers <= 0
-      if (isNewAccount || isNoFollowers) {
-        await manualRequest(token, owner, repo, issueNo)
-        return
-      }
-
       // submission
       if (prefixTag === 'submission') {
+        const user = await getUser(token, username)
+        const createdAtDiffMs = new Date() - new Date(user.data.created_at)
+        const isNewAccount = createdAtDiffMs < 1000 * 60 * 60 * 24 * 7 /* 7 days */
+        const isNoFollowers = user.data.followers <= 0
+        if (isNewAccount || isNoFollowers) {
+          await manualRequest(token, owner, repo, issueNo)
+          return
+        }
         await approve(token, owner, repo, issueNo, username, title)
       }
       // transfer, appeal, issue, suggestion
