@@ -6,10 +6,13 @@ on:
 jobs:
   run:
     name: Run Bot
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - run: yarn
-      - uses: ./
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup
+        run: yarn
+      - name: Run
+        uses: ./
         with:
           github-token: "${{ secrets.REPO_TOKEN }}"
