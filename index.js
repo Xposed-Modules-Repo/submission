@@ -96,7 +96,7 @@ async function run () {
         // const isNewAccount = createdAtDiffMs < 1000 * 60 * 60 * 24 * 7 /* 7 days */
         // const isNoFollowers = user.data.followers <= 0
         // if (isNewAccount || isNoFollowers) {
-        if (true)
+        if (true) {
           await manualRequest(token, owner, repo, issueNo)
           return
         }
