@@ -91,11 +91,12 @@ async function run () {
 
       // submission
       if (prefixTag === 'submission') {
-        const user = await getUser(token, username)
-        const createdAtDiffMs = new Date() - new Date(user.data.created_at)
-        const isNewAccount = createdAtDiffMs < 1000 * 60 * 60 * 24 * 7 /* 7 days */
-        const isNoFollowers = user.data.followers <= 0
-        if (isNewAccount || isNoFollowers) {
+        // const user = await getUser(token, username)
+        // const createdAtDiffMs = new Date() - new Date(user.data.created_at)
+        // const isNewAccount = createdAtDiffMs < 1000 * 60 * 60 * 24 * 7 /* 7 days */
+        // const isNoFollowers = user.data.followers <= 0
+        // if (isNewAccount || isNoFollowers) {
+        if (true)
           await manualRequest(token, owner, repo, issueNo)
           return
         }
