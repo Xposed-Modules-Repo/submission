@@ -125,7 +125,7 @@ async function closeIssue (token, owner, repo, issueNumber, isCompleted = false)
     state: 'closed',
     state_reason: isCompleted ? 'completed' : 'not_planned'
   })
-  await octkit.rest.issues.lock({
+  await octokit.rest.issues.lock({
     owner,
     repo,
     issue_number: issueNumber,
