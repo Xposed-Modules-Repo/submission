@@ -1,0 +1,11 @@
+{
+  "name": "Android CamSwap",
+  "package": "com.example.camswap",
+  "versionName": "0.16.0217",
+  "versionCode": 26021700,
+  "author": "zensu357",
+  "description": "Android CamSwap - Open Source Version 基于xposed的安卓虚拟摄像头app",
+  "source": "https://github.com/zensu357/Android-CamSwap-OpenSource",
+  "support": "https://github.com/zensu357/Android-CamSwap-OpenSource/issues",
+  "changelog": "https://github.com/zensu357/Android-CamSwap-OpenSource/releases"
+}
