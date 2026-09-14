@@ -29,7 +29,7 @@ async function approve(token: string, owner: string, repo: string, issueNo: numb
     await leaveComment(token, owner, repo, issueNo,
       'Dear developer,\n\n' +
       'We created a repository https://github.com/Xposed-Modules-Repo/' + title +
-      ' for you. You should find yourself as admin role of the repo now, if you ' +
+      ' for you. You should find yourself as maintain role of the repo now, if you ' +
       "don't, check your email or [here](https://github.com/Xposed-Modules-Repo/" + title + "/invitations) to accept invitation. Enjoy!\n\n" +
       'To make your repository appear in the app and website, here is what you need to do,\n' +
       "- Make sure you're not leaving the GitHub repo description blank, which indicates the Xposed module display name.\n" +

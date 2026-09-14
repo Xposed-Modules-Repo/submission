@@ -2,7 +2,7 @@
 Submit your Xposed Modules!
 
 ### How to
-To submit your module, please fire an issue with title `[submission] packagename`, where `packagename` is the application ID of your module. Then our bot will automatically create a new repository and invite you to be the admin.
+To submit your module, please fire an issue with title `[submission] packagename`, where `packagename` is the application ID of your module. Then our bot will automatically create a new repository and invite you to be the maintain.
 
 ### Application ID requirement
 - For reverse domain name notation in your application id, please use something you own rather than random domain.
