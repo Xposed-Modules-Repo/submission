@@ -9,7 +9,7 @@ async function approveTransfer(token: string, owner: string, repo: string, issue
   if (ok) {
     await leaveComment(token, owner, repo, issueNo,
       'Dear developer,\n\n' +
-      'You should find yourself as admin role of the repo now, if you ' +
+      'You should find yourself as maintain role of the repo now, if you ' +
       "don't, check your email or [here](https://github.com/Xposed-Modules-Repo/" + title + "/invitations) to accept invitation."
     )
     await setLabel(token, owner, repo, issueNo, ['approved']) // clear other labels
