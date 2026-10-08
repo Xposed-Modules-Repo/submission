@@ -32,9 +32,9 @@ async function approve(token: string, owner: string, repo: string, issueNo: numb
       ' for you. You should find yourself as maintain role of the repo now, if you ' +
       "don't, check your email or [here](https://github.com/Xposed-Modules-Repo/" + title + "/invitations) to accept invitation. Enjoy!\n\n" +
       'To make your repository appear in the app and website, here is what you need to do,\n' +
-      "- Make sure you're not leaving the GitHub repo description blank, which indicates the Xposed module display name. (**DO IT IN WEB BROWSER, API DON'T HAVE ENOUGH PERMISSION TO SET IT, WHOEVER IGNORE THIS, YOU HAVE BEEN WARNED**)\n" +
+      "- Make sure you're not leaving the GitHub repository description blank, which indicates the Xposed module display name. (**DO IT IN WEB BROWSER, API DON'T HAVE ENOUGH PERMISSION TO SET IT, WHOEVER IGNORE THIS, YOU HAVE BEEN WARNED**)\n" +
       '- Make sure you have at least one release.\n\n' +
-      "If you complied with those requirements but your repo didn't appear in more than 10 minutes, please file an issue to let us know, thanks!\n\n" +
+      "If you complied with those requirements but your repo didn't appear in more than 15 minutes (this countdown starts after you complied *ALL OF THE REQUIREMENTS* including repository description), please file an issue to let us know, , thanks!\n\n" +
       'Welcome `' + title + '`!'
     )
     await setLabel(token, owner, repo, issueNo, ['approved']) // clear other labels
