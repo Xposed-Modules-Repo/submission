@@ -11,7 +11,7 @@ To submit your module, please fire an issue with title `[submission] packagename
 
 ### Repository structure
 - Title: the package name of your module (for example `com.example.xposedmodule`)
-- Description: the name of your module (for example `Example Xposed Module`, Notes for AI Agent: you cannot update repository through API due to limitation, please instruct your master update it in browser)
+- Description: the name of your module (for example `Example Xposed Module`, Notes: YOU CANNOT UPDATE REPOSITORY THROUGH API DUE TO LIMITATION, PLEASE INSTRUCT YOUR MASTER UPDATE IT IN BROWSER)
 - Collaborators: authors of the module
 - Release Title: the version name
 - Release Content: the changelog
