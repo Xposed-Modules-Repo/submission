@@ -26,7 +26,7 @@ To submit your module, please fire an issue with title `[submission] packagename
 
 ### Important notes
 1. If your repository is incomplete, it won't be shown
-2. Update of your repository will automatically trigger [build](https://github.com/Xposed-Modules-Repo/modules/actions/workflows/build.yml) and be shown in 5 to 15 minutes.
+2. Update of your repository will automatically trigger [build](https://github.com/Xposed-Modules-Repo/modules/actions/workflows/build.yml) and be shown in 5 to 60 minutes.
 3. If you want your module's update to be shown, please tag it correctly with the apk. (As long as you submit the release with the apk, bot will automatically [update](https://github.com/Xposed-Modules-Repo/modules/actions/workflows/tag.yml) your tag. However, if you edit the release by **only** changing the apk, bot [cannot know](https://stackoverflow.com/questions/37437581/listening-to-release-asset-changes-with-github-webhooks) your editing and the tag won't be updated. So for the best practice, always submit release with valid apk.
 
 ## Transfer
