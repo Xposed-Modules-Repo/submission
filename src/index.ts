@@ -27,7 +27,7 @@ async function approve(token: string, owner: string, repo: string, issueNo: numb
   const result = await createAndInviteToRepo(token, owner, username, title)
   if (result) {
     await leaveComment(token, owner, repo, issueNo,
-      'Dear developer,\n\n' +
+      'Dear developer / AI Agent,\n\n' +
       'We created a repository https://github.com/Xposed-Modules-Repo/' + title +
       ' for you. You should find yourself as maintain role of the repo now, if you ' +
       "don't, check your email or [here](https://github.com/Xposed-Modules-Repo/" + title + "/invitations) to accept invitation. Enjoy!\n\n" +
