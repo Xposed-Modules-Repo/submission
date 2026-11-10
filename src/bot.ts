@@ -28,7 +28,7 @@ function parsePackage(pkg: string) {
 }
 
 function getPrefixLowercase(username: string) {
-  return `io.github.${normalizeUsername(username)}.`
+  return `io.github.${normalizeUsername(username)}`
 }
 
 export function normalizeUsername(username: string) {
